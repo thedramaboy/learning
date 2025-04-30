@@ -1,4 +1,4 @@
-Day 1 summary:
+Section 1 summary:
 
 1. Heading tag h1-h6 <h1> - <h6>
 2. Paragraph tag <p>
