@@ -1,7 +1,10 @@
-export class NumberCollection {
+import { Sorter } from "./sorter.js";
+
+export class NumberCollection extends Sorter {
     public data: number[];
 
     constructor (data: number[]) {
+        super();
         this.data = data;
     }
 

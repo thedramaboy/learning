@@ -1,3 +1,5 @@
+import { Sorter } from "./sorter.js";
+
 class Node {
     public data: number;
     public next: Node | null;
@@ -8,7 +10,8 @@ class Node {
     }
 }
 
-export class LinkedList {
+export class LinkedList extends Sorter {
+    
     head: Node | null = null;
 
     add(data: number): void {
