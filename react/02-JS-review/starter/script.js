@@ -142,3 +142,75 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+// Destructuring assignment & Spread syntax
+const book = getBook(1);
+const updatedBook = { ...book, moviePublicationDate: "2001-12-19" };
+// console.log(updatedBook);
+
+// Ternary operator
+const pageRange = book.pages > 1000 ? "Over thousand" : "Less than 1000 pages";
+// console.log(pageRange);
+
+// Arrow function
+const getYear = (string) => string.split("-")[0];
+
+// function expression
+const getYear1 = function (string) {
+  string.split("-")[0];
+};
+
+// Chaining
+function getTotalReviewCount(book) {
+  const goodRead = book.reviews.goodreads.reviewsCount;
+  const librarything = book.reviews.librarything?.reviewsCount ?? 0;
+  return goodRead + librarything;
+}
+// console.log(getTotalReviewCount(book));
+
+const books = getBooks();
+
+// Map method
+const x = [1, 2, 3, 4, 5].map((elem) => elem * 2);
+// console.log(x);
+
+// Filter method
+const adventureBook = books
+  .filter((books) => books.genres.includes("adventure"))
+  .map((book) => book.title);
+// console.log(adventureBook);
+
+// Reduce method
+const pageAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
+// console.log(pageAllBooks);
+
+// Sort method
+const arr = [3, 7, 1, 9, 6];
+const sorted = arr.sort((a, b) => a - b);
+
+// Working with immutable array
+const newBook = {
+  id: 6,
+  title: "Harry Potter and the Chamber of Secrets",
+  author: "J.K. Rowling",
+};
+
+const booksAfterAdd = [...books, newBook];
+// console.log([...books, newBook]);
+
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+// console.log(booksAfterDelete);
+
+// Promises old way with then
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+
+// Promise cleaner way with async/ await
+async function getTodos() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const data = await res.json();
+  return data;
+}
+
+const todos = getTodos();
